@@ -9,8 +9,9 @@
  * @author Zane M. Kolnik zanematthew[at]gmail[dot]com
  */
 require_once 'ImageMeta.php';
-Class MediaUpload {
+class MediaUpload {
 
+    
     public $upload_dir;
     private $attachment_id;
 
@@ -28,8 +29,8 @@ Class MediaUpload {
      * During form submission run the method:
      * $class->fileUpload( $field_name='form_field_name' );
      *
-     * @return $final_file An array of array of f*cking cool stuff
-     * I guess if you think arrays are cool i like (*)(*)s
+     * @return $final_file array
+     * 
      * $final_file['attachment_id'] = $this->attachment_id;
      * $final_file['file'] = $uploaded_file['file'];
      * $final_file['file_info'] = $file_info[];
@@ -37,7 +38,7 @@ Class MediaUpload {
     public function saveUpload( $field_name=null, $user_id=null ) {
 
         if ( is_null( $field_name ) )
-            die('Need field_name');
+            throw new Exception("\$field_name cannot be null!");
 
         // Move the file to the uploads directory, returns an array
         // of information from $_FILES
